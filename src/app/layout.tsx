@@ -29,8 +29,32 @@
 // }
 
 
+
+// import type { Metadata } from "next";
+// import "./globals.css";
+
+// export const metadata: Metadata = {
+//   title: "LoopCampus — Give Good Things a Second Life",
+//   description:
+//     "Discover, exchange, and reuse pre-loved campus essentials. Less waste, more value, one campus at a time.",
+//   applicationName: "LoopCampus",
+// };
+
+// export default function RootLayout({
+//   children,
+// }: Readonly<{
+//   children: React.ReactNode;
+// }>) {
+//   return (
+//     <html lang="en">
+//       <body>{children}</body>
+//     </html>
+//   );
+// }
+
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "LoopCampus — Give Good Things a Second Life",
@@ -46,7 +70,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,12 +1,36 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   color-scheme: light;
   --background: #faf9f6;
   --foreground: #202a21;
   --brand: #294b35;
   --brand-light: #648957;
+  --surface: #ffffff;
+  --surface-muted: #f4f3ed;
+  --border: #e5e5db;
+  --muted: #73796d;
+  --input-bg: #ffffff;
+  --input-text: #263629;
+  --placeholder: #858a7d;
+}
+
+html.dark {
+  color-scheme: dark;
+  --background: #171e19;
+  --foreground: #edf1e9;
+  --brand: #8fac83;
+  --brand-light: #a6c596;
+  --surface: #202a23;
+  --surface-muted: #1b251e;
+  --border: #354339;
+  --muted: #b0bbad;
+  --input-bg: #222c24;
+  --input-text: #edf1e9;
+  --placeholder: #a5b1a1;
 }
 
 * {
@@ -16,6 +40,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
+  background: var(--background);
 }
 
 body {
@@ -25,6 +50,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  transition: background-color 180ms ease, color 180ms ease;
 }
 
 button,
@@ -49,6 +75,11 @@ a {
   text-decoration: none;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+}
+
 ::selection {
   background: #dce8d0;
   color: #203d29;
@@ -59,10 +90,220 @@ a {
   outline-offset: 3px;
 }
 
-img {
-  display: block;
-  max-width: 100%;
+/* -----------------------------------------
+   DARK MODE: PAGE FOUNDATIONS
+----------------------------------------- */
+
+html.dark body,
+html.dark main {
+  background-color: var(--background);
+  color: var(--foreground);
 }
+
+html.dark section,
+html.dark footer {
+  border-color: var(--border);
+}
+
+/* -----------------------------------------
+   DARK MODE: SURFACES AND CARDS
+----------------------------------------- */
+
+html.dark [class~="bg-white"],
+html.dark [class~="bg-[#faf9f6]"],
+html.dark [class~="bg-[#faf9f6]/95"],
+html.dark [class~="bg-[#faf9f6]/80"],
+html.dark [class~="bg-[#f4f3ed]"],
+html.dark [class~="bg-[#f3f3ed]"],
+html.dark [class~="bg-[#f1f2eb]"],
+html.dark [class~="bg-[#f0f3eb]"],
+html.dark [class~="bg-[#eeeee6]"],
+html.dark [class~="bg-[#eff0e8]"],
+html.dark [class~="bg-[#eff2e8]"],
+html.dark [class~="bg-[#f4f4ed]"],
+html.dark [class~="bg-[#f0f4eb]"],
+html.dark [class~="bg-[#eaf0e3]"],
+html.dark [class~="bg-[#e8eddf]"],
+html.dark [class~="bg-[#e6e9db]"],
+html.dark [class~="bg-[#e5e9dc]"] {
+  background-color: var(--surface) !important;
+}
+
+/* Keep muted panels distinguishable from cards. */
+html.dark [class~="bg-[#f4f3ed]"],
+html.dark [class~="bg-[#f3f3ed]"],
+html.dark [class~="bg-[#eff0e8]"],
+html.dark [class~="bg-[#eff2e8]"],
+html.dark [class~="bg-[#f0f4eb]"],
+html.dark [class~="bg-[#eaf0e3]"],
+html.dark [class~="bg-[#e8eddf]"],
+html.dark [class~="bg-[#e6e9db]"],
+html.dark [class~="bg-[#e5e9dc]"] {
+  background-color: var(--surface-muted) !important;
+}
+
+/* Translucent light surfaces */
+html.dark [class*="bg-white/"],
+html.dark [class*="bg-[#faf9f6]/"] {
+  background-color: #202a23 !important;
+}
+
+/* -----------------------------------------
+   DARK MODE: BORDERS
+----------------------------------------- */
+
+html.dark [class*="border-[#e"],
+html.dark [class*="border-[#d"],
+html.dark [class*="border-[#c"] {
+  border-color: var(--border) !important;
+}
+
+/* -----------------------------------------
+   DARK MODE: TEXT CONTRAST
+----------------------------------------- */
+
+html.dark [class*="text-[#202a21]"],
+html.dark [class*="text-[#20231d]"],
+html.dark [class*="text-[#263629]"],
+html.dark [class*="text-[#294b35]"],
+html.dark [class*="text-[#304332]"],
+html.dark [class*="text-[#344535]"],
+html.dark [class*="text-[#34553a]"],
+html.dark [class*="text-[#365337]"],
+html.dark [class*="text-[#3e4b3b]"],
+html.dark [class*="text-[#40533b]"],
+html.dark [class*="text-[#424c3e]"],
+html.dark [class*="text-[#46643c]"],
+html.dark [class*="text-[#475443]"],
+html.dark [class*="text-[#4d6245]"],
+html.dark [class*="text-[#525b4c]"],
+html.dark [class*="text-[#62695c]"],
+html.dark [class*="text-[#656b60]"],
+html.dark [class*="text-[#66715e]"],
+html.dark [class*="text-[#687264]"],
+html.dark [class*="text-[#6f7968]"],
+html.dark [class*="text-[#73796d]"],
+html.dark [class*="text-[#777d70]"],
+html.dark [class*="text-[#7a8673]"],
+html.dark [class*="text-[#7b8174]"],
+html.dark [class*="text-[#808477]"],
+html.dark [class*="text-[#828679]"],
+html.dark [class*="text-[#858a7d]"],
+html.dark [class*="text-[#85897d]"],
+html.dark [class*="text-[#888c7e]"],
+html.dark [class*="text-[#93968b]"],
+html.dark [class*="text-[#96998e]"],
+html.dark [class*="text-[#9a9c92]"],
+html.dark [class*="text-[#9a9d92]"],
+html.dark [class*="text-[#a0a297]"] {
+  color: #bdc8b9 !important;
+}
+
+/* Green headings and accents */
+html.dark [class*="text-[#52734a]"],
+html.dark [class*="text-[#54744a]"],
+html.dark [class*="text-[#56754b]"],
+html.dark [class*="text-[#5b8550]"],
+html.dark [class*="text-[#628357]"],
+html.dark [class*="text-[#638557]"],
+html.dark [class*="text-[#648957]"],
+html.dark [class*="text-[#6a8b5b]"],
+html.dark [class*="text-[#779166]"],
+html.dark [class*="text-[#78916a]"],
+html.dark [class*="text-[#83947a]"] {
+  color: #a6c596 !important;
+}
+
+/* -----------------------------------------
+   DARK MODE: FORMS
+----------------------------------------- */
+
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark textarea,
+html.dark select {
+  background-color: var(--input-bg) !important;
+  color: var(--input-text) !important;
+  border-color: #465548;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: var(--placeholder) !important;
+  opacity: 1;
+}
+
+html.dark option {
+  background-color: var(--input-bg);
+  color: var(--input-text);
+}
+
+html.dark input[type="checkbox"],
+html.dark input[type="radio"] {
+  accent-color: #a6c596;
+}
+
+/* -----------------------------------------
+   DARK MODE: CHAT
+----------------------------------------- */
+
+/* Message history containers */
+html.dark [class*="bg-[#f8f8f3]"],
+html.dark [class*="bg-[#f7f8f2]"] {
+  background-color: #111813 !important;
+}
+
+/* Received message bubbles */
+html.dark [class*="bg-white"][class*="text-[#20231d]"] {
+  background-color: #29352c !important;
+  color: #edf1e9 !important;
+}
+
+/* Sent message bubbles */
+html.dark [class*="bg-[#315b42]"] {
+  background-color: #315b42 !important;
+  color: #ffffff !important;
+}
+
+/* Chat timestamps and supporting text */
+html.dark time {
+  color: #bdc8b9;
+}
+
+/* -----------------------------------------
+   PRIMARY ACTION BUTTONS
+----------------------------------------- */
+
+/* Light mode: white text on dark green buttons. */
+html:not(.dark) button[class*="bg-[#294b35]"],
+html:not(.dark) a[class*="bg-[#294b35]"],
+html:not(.dark) button[class*="bg-[#315b42]"],
+html:not(.dark) a[class*="bg-[#315b42]"] {
+  color: #ffffff;
+}
+
+/* Dark mode: brighter green with readable white text. */
+html.dark button[class*="bg-[#294b35]"],
+html.dark a[class*="bg-[#294b35]"],
+html.dark button[class*="bg-[#315b42]"],
+html.dark a[class*="bg-[#315b42]"] {
+  background-color: #426649 !important;
+  color: #ffffff !important;
+}
+
+/* Preserve hover contrast in both themes. */
+html:not(.dark) [class*="hover:bg-[#1d3525]"]:hover {
+  background-color: #1d3525;
+  color: #ffffff;
+}
+
+html.dark [class*="hover:bg-[#1d3525]"]:hover {
+  background-color: #527a58 !important;
+  color: #ffffff !important;
+}
+
+/* -----------------------------------------
+   ACCESSIBILITY: REDUCED MOTION
+----------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
   *,

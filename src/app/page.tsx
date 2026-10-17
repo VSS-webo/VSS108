@@ -181,17 +181,17 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#faf9f6] text-[#202a21]">
       {/* Announcement strip */}
-      <div className="flex items-center justify-center gap-2 bg-[#233e2d] px-4 py-2.5 text-center text-xs font-medium tracking-wide text-white sm:text-sm">
+      {/* <div className="flex items-center justify-center gap-2 bg-[#233e2d] px-4 py-2.5 text-center text-xs font-medium tracking-wide text-white sm:text-sm">
         <Leaf size={14} />
         <span>A better campus starts with what we reuse.</span>
         <span className="hidden text-white/50 sm:inline">·</span>
         <span className="hidden text-[#d6e5b6] sm:inline">
           Give good things another life.
         </span>
-      </div>
+      </div> */}
 
       {/* Navigation */}
-      <header className="sticky top-0 z-30 border-b border-[#e9e9e0] bg-[#faf9f6]/95 backdrop-blur-xl">
+      {/* <header className="sticky top-0 z-30 border-b border-[#e9e9e0] bg-[#faf9f6]/95 backdrop-blur-xl">
         <div className="mx-auto flex h-[76px] max-w-[1440px] items-center justify-between gap-4 px-5 sm:px-8 lg:px-12">
           <a href="/" className="flex shrink-0 items-center gap-2.5">
             <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#294b35] text-[#e5efc9]">
@@ -236,7 +236,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[#e8e9df]">
@@ -268,7 +268,8 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#marketplace"
-                className="inline-flex items-center gap-3 rounded-full bg-[#294b35] px-6 py-4 text-sm font-semibold text-white shadow-[0_8px_25px_rgba(41,75,53,0.15)] transition hover:-translate-y-0.5 hover:bg-[#1d3525]"
+                // className="inline-flex items-center gap-3 rounded-full bg-[#294b35] px-6 py-4 text-sm font-semibold text-white shadow-[0_8px_25px_rgba(41,75,53,0.15)] transition hover:-translate-y-0.5 hover:bg-[#1d3525]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#294b35] px-6 py-4 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1d3525] dark:bg-[#426649] dark:text-white dark:hover:bg-[#527a58]"
               >
                 Explore the marketplace
                 <ArrowRight size={17} />

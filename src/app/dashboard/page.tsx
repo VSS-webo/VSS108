@@ -473,7 +473,7 @@ export default function DashboardPage() {
 
   return (
     <main className="min-h-screen bg-[#faf9f6] text-[#202a21]">
-      <header className="border-b border-[#e8e8df] bg-white/80">
+      {/* <header className="border-b border-[#e8e8df] bg-white/80">
         <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-5 sm:px-8">
           <Link href="/" className="text-lg font-bold tracking-tight text-[#294b35]">
             loop<span className="text-[#648957]">campus</span>
@@ -482,7 +482,7 @@ export default function DashboardPage() {
             <ShoppingBag size={16} /> Marketplace
           </Link>
         </div>
-      </header>
+      </header> */}
 
       {/* <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8 sm:py-12">
         <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
