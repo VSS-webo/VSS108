@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -28,7 +28,7 @@ const navigation = [
   { label: "My profile", href: "/profile", icon: UserRound, protected: true },
 ];
 
-export default function Navbar() {
+function NavbarContent() {
   const pathname = usePathname();
 
   const [signedIn, setSignedIn] = useState(false);
@@ -314,5 +314,16 @@ export default function Navbar() {
         </div>
       )}
     </>
+  );
+}
+export default function Navbar() {
+  return (
+    <Suspense
+      fallback={
+        <div className="h-16" aria-hidden="true" />
+      }
+    >
+      <NavbarContent />
+    </Suspense>
   );
 }
