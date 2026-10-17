@@ -1,13 +1,13 @@
 
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { Suspense, FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { LoaderCircle, Recycle } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
-export default function ResetPasswordPage() {
+function ResetPasswordForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -190,5 +190,20 @@ export default function ResetPasswordPage() {
         </p>
       </section>
     </main>
+  );
+}
+export default function ResetPasswordPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center">
+          <p className="text-sm text-gray-500">
+            Loading password reset...
+          </p>
+        </div>
+      }
+    >
+      <ResetPasswordForm />
+    </Suspense>
   );
 }
