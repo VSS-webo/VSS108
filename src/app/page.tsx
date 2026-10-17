@@ -25,7 +25,7 @@ import {
   X,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
-
+import AuthButton from "@/components/AuthButton";
 type Listing = {
   id: string;
   owner_id: string;
@@ -226,12 +226,7 @@ export default function Home() {
           </nav>
 
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-            <a
-              href="/auth"
-              className="hidden rounded-full px-4 py-2.5 text-sm font-semibold text-[#294b35] transition hover:bg-[#edf0e7] sm:inline-flex"
-            >
-              Sign in
-            </a>
+            <AuthButton />
             <a
               href="/listings/new"
               className="inline-flex items-center gap-2 rounded-full bg-[#294b35] px-4 py-3 text-xs font-semibold text-white shadow-sm transition hover:bg-[#1d3525] sm:px-5 sm:text-sm"

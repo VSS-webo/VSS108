@@ -1,13 +1,23 @@
 
 "use client";
 
-import { FormEvent, useState } from "react";
+import { Suspense, FormEvent, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowLeft, LoaderCircle, Recycle, ShieldCheck } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
-export default function AuthPage() {
+
+function getSafeNextPath(value: string | null): string {
+  if (!value || !value.startsWith("/") || value.startsWith("//")) {
+    return "/dashboard";
+  }
+
+  return value;
+}
+
+
+function AuthPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -48,9 +58,11 @@ export default function AuthPage() {
         if (authError) throw authError;
 
         if (data.session) {
-          router.replace("/listings/new");
-          router.refresh();
-          return;
+        const nextPath = getSafeNextPath(searchParams.get("next"));
+
+        router.replace(nextPath);
+        router.refresh();
+        return;
         }
 
         setMessage(
@@ -64,13 +76,9 @@ export default function AuthPage() {
 
         if (authError) throw authError;
 
-        const destination = searchParams.get("next");
-        const safeDestination =
-          destination?.startsWith("/") && !destination.startsWith("//")
-            ? destination
-            : "/listings/new";
+        const nextPath = getSafeNextPath(searchParams.get("next"));
 
-        router.replace(safeDestination);
+        router.replace(nextPath);
         router.refresh();
         return;
       }
@@ -280,5 +288,18 @@ export default function AuthPage() {
         </div>
       </div>
     </main>
+  );
+}
+export default function AuthPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="flex min-h-screen items-center justify-center">
+          <p>Loading authentication...</p>
+        </main>
+      }
+    >
+      <AuthPageContent />
+    </Suspense>
   );
 }

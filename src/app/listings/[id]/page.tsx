@@ -4,14 +4,13 @@ import { notFound } from "next/navigation";
 import {
   ArrowLeft,
   BookOpen,
-  CheckCircle2,
-  Clock3,
   Recycle,
   ShieldCheck,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
+import ExchangeActions from "./ExchangeActions";
 
-// export const dynamic = "force-dynamic";
+export const instant = false;
 
 type Listing = {
   id: string;
@@ -27,7 +26,7 @@ type Listing = {
   created_at: string;
 };
 
-export default async function ListingDetailPage({
+async function ListingDetailContent({
   params,
 }: {
   params: Promise<{ id: string }>;
@@ -99,7 +98,7 @@ export default async function ListingDetailPage({
               <img
                 src={imageUrl}
                 alt={listing.title}
-                className="aspect-[4/3] w-full object-contain bg-[#f4f4ed] p-3"
+                className="aspect-[4/3] w-full bg-[#f4f4ed] object-contain p-3"
               />
             ) : (
               <div className="flex aspect-[4/3] flex-col items-center justify-center bg-[#eff2e8] text-[#78916b]">
@@ -150,7 +149,9 @@ export default async function ListingDetailPage({
 
               <div className="rounded-2xl border border-[#e4e5db] bg-white p-4">
                 <p className="text-xs text-[#858a7d]">Listed on</p>
-                <p className="mt-1.5 text-sm font-semibold">{formattedDate}</p>
+                <p className="mt-1.5 text-sm font-semibold">
+                  {formattedDate}
+                </p>
               </div>
             </div>
 
@@ -179,28 +180,11 @@ export default async function ListingDetailPage({
               </div>
             </div>
 
-            {isAvailable ? (
-              <div className="mt-6 rounded-2xl bg-[#294b35] p-5 text-white">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={19} className="text-[#d6e7bd]" />
-                  <p className="text-sm font-semibold">Available for exchange</p>
-                </div>
-                <p className="mt-2 text-sm leading-6 text-white/70">
-                  Exchange requests will be available here once the request
-                  workflow is connected.
-                </p>
-              </div>
-            ) : (
-              <div className="mt-6 rounded-2xl border border-[#e4e5db] bg-white p-5">
-                <div className="flex items-center gap-2 text-sm font-semibold">
-                  <Clock3 size={18} className="text-[#8a7959]" />
-                  This item is {listing.status.toLowerCase()}.
-                </div>
-                <p className="mt-2 text-sm leading-6 text-[#7b8174]">
-                  Check back for other available items in the marketplace.
-                </p>
-              </div>
-            )}
+            <ExchangeActions
+              listingId={listing.id}
+              ownerId={listing.owner_id}
+              listingStatus={listing.status}
+            />
 
             <p className="mt-5 break-all text-xs text-[#9a9d92]">
               Listing reference: {listing.id}
@@ -210,4 +194,12 @@ export default async function ListingDetailPage({
       </div>
     </main>
   );
+}
+
+export default async function ListingDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  return <>{await ListingDetailContent({ params })}</>;
 }
