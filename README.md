@@ -8,7 +8,7 @@ LoopCampus helps students give useful items a second life instead of letting the
 
 Live Deployment : https://vss108-buildathon.vercel.app/
 ## Video
-Video : https://drive.google.com/file/d/1R9JCnWfisLtqwjJn6hUvD2h6iEyb68tX/view?usp=sharing
+Video : https://drive.google.com/file/d/15xZaQFL-X15NfXuq5V8FyhoBWq6h2Lgm/view?usp=sharing
 
 ## Why LoopCampus?
 
