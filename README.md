@@ -6,6 +6,8 @@ LoopCampus helps students give useful items a second life instead of letting the
 
 > Built with Next.js, TypeScript, Tailwind CSS, and Supabase.
 
+Live Deployment : https://vss108-buildathon.vercel.app/
+
 ## Why LoopCampus?
 
 Students often have books, stationery, electronics, lab equipment, and other useful items they no longer need, while another student nearby may be looking for exactly those things. LoopCampus brings that exchange into a focused campus experience: easier discovery, clearer item details, a visible request lifecycle, and a place to coordinate the handover.
