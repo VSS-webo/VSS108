@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import AuthButton from "@/components/AuthButton";
-
+import MeetupScheduler from "@/components/meetups/MeetupScheduler";
 type Listing = {
   id: string;
   owner_id: string;
@@ -622,7 +622,10 @@ export default function DashboardPage() {
             );
           })}
         </div>
-
+        
+        <div className="mt-8">
+            <MeetupScheduler />
+        </div>
         <div className="mt-8 flex gap-2 overflow-x-auto border-b border-[#e4e5db] pb-3">
           {tabs.map((item) => (
             <button

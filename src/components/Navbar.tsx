@@ -9,6 +9,7 @@ import {
   House,
   LayoutDashboard,
   MessageCircle,
+  CalendarDays,
   PlusCircle,
   UserRound,
   Menu,
@@ -23,6 +24,7 @@ import AuthButton from "@/components/AuthButton";
 const navigation = [
   { label: "Marketplace", href: "/", icon: House, protected: false },
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard, protected: true },
+  { label: "Meetups", href: "/dashboard#campus-meetups", icon: CalendarDays, protected: true },
   { label: "Messages", href: "/messages", icon: MessageCircle, protected: true },
   { label: "List an item", href: "/listings/new", icon: PlusCircle, protected: true },
   { label: "My profile", href: "/profile", icon: UserRound, protected: true },

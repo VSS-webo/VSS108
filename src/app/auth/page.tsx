@@ -7,7 +7,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowLeft, LoaderCircle, Recycle, ShieldCheck } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
-
 function getSafeNextPath(value: string | null): string {
   if (!value || !value.startsWith("/") || value.startsWith("//")) {
     return "/dashboard";
@@ -15,7 +14,6 @@ function getSafeNextPath(value: string | null): string {
 
   return value;
 }
-
 
 function AuthPageContent() {
   const router = useRouter();
@@ -58,21 +56,22 @@ function AuthPageContent() {
         if (authError) throw authError;
 
         if (data.session) {
-        const nextPath = getSafeNextPath(searchParams.get("next"));
+          const nextPath = getSafeNextPath(searchParams.get("next"));
 
-        router.replace(nextPath);
-        router.refresh();
-        return;
+          router.replace(nextPath);
+          router.refresh();
+          return;
         }
 
         setMessage(
           "Account created. Check your email for a confirmation link, then sign in."
         );
       } else {
-        const { error: authError } = await supabase.auth.signInWithPassword({
-          email: email.trim(),
-          password,
-        });
+        const { error: authError } =
+          await supabase.auth.signInWithPassword({
+            email: email.trim(),
+            password,
+          });
 
         if (authError) throw authError;
 
@@ -166,6 +165,7 @@ function AuthPageContent() {
               >
                 Create account
               </button>
+
               <button
                 type="button"
                 onClick={() => {
@@ -192,6 +192,7 @@ function AuthPageContent() {
                   >
                     Display name
                   </label>
+
                   <input
                     id="name"
                     required
@@ -213,6 +214,7 @@ function AuthPageContent() {
                 >
                   Email address
                 </label>
+
                 <input
                   id="email"
                   type="email"
@@ -233,6 +235,7 @@ function AuthPageContent() {
                 >
                   Password
                 </label>
+
                 <input
                   id="password"
                   type="password"
@@ -247,6 +250,24 @@ function AuthPageContent() {
                   className="w-full rounded-xl border border-[#e1e2d9] bg-white px-4 py-3.5 text-sm outline-none transition focus:border-[#78966a] focus:ring-4 focus:ring-[#78966a]/10"
                 />
               </div>
+
+              {/* Forgot password link: visible only in sign-in mode */}
+              {mode === "signin" && (
+                <div className="-mt-2 flex justify-end">
+                  <Link
+                    href={`/auth/forgot-password${
+                      searchParams.get("next")
+                        ? `?next=${encodeURIComponent(
+                            getSafeNextPath(searchParams.get("next"))
+                          )}`
+                        : ""
+                    }`}
+                    className="text-sm font-semibold text-[#648957] transition hover:text-[#294b35] hover:underline"
+                  >
+                    Forgot password?
+                  </Link>
+                </div>
+              )}
 
               {error && (
                 <p
@@ -272,6 +293,7 @@ function AuthPageContent() {
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#294b35] px-5 py-4 text-sm font-semibold text-white transition hover:bg-[#1d3525] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {busy && <LoaderCircle size={17} className="animate-spin" />}
+
                 {busy
                   ? "Please wait..."
                   : mode === "signup"
@@ -290,6 +312,7 @@ function AuthPageContent() {
     </main>
   );
 }
+
 export default function AuthPage() {
   return (
     <Suspense
