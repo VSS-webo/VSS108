@@ -10,6 +10,28 @@ LoopCampus helps students give useful items a second life instead of letting the
 
 Students often have books, stationery, electronics, lab equipment, and other useful items they no longer need, while another student nearby may be looking for exactly those things. LoopCampus brings that exchange into a focused campus experience: easier discovery, clearer item details, a visible request lifecycle, and a place to coordinate the handover.
 
+## Screenshots
+
+### Marketplace
+Browse listings and discover items available on campus.
+
+![LoopCampus Marketplace](docs/screenshots/dashboard_items.png)
+
+### Dashboard
+Manage your listings and exchange requests.
+
+![LoopCampus Dashboard](docs/screenshots/dashboard.png)
+
+### Meetup Scheduler
+Coordinate meetups for exchanges.
+
+![LoopCampus Meetup Scheduler](docs/screenshots/meetups.png)
+
+### Messaging
+Communicate with other students about exchanges.
+
+![LoopCampus Messaging](docs/screenshots/chats.png)
+
 ## Features
 
 ### Discover and list items
