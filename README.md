@@ -215,30 +215,6 @@ src/
 - Validate database functions and their execution permissions; client-side checks are not a substitute for database authorization.
 - Test authentication, password recovery, and access control in the deployed environment before inviting users.
 
-## Current setup limitations
-
-The repository snapshot does not contain a database migration directory, SQL schema export, automated test suite, or checked-in product screenshots. A new contributor will need the matching Supabase schema and database functions from the project's configured environment before all data-backed features can run. Add migrations and screenshots to the repository as a follow-up so setup and review are reproducible.
-
-## Roadmap
-
-- [ ] Add versioned Supabase migrations and seed/demo data.
-- [ ] Add automated tests for authentication, exchange-request transitions, messaging permissions, and meetup actions.
-- [ ] Add genuine screenshots of the marketplace, dashboard, messaging, and meetup flow.
-- [ ] Publish a short product demo video.
-- [ ] Document deployment and production environment configuration.
-
-## Contributing
-
-Issues and focused pull requests are welcome. Before opening a pull request:
-
-1. Keep changes scoped and explain the user problem they solve.
-2. Run `npm run lint` and `npm run build`.
-3. Never commit credentials, private user data, or production database exports.
-4. Update the README when setup steps or user-facing behavior change.
-
-## License
-
-No license file was present in the supplied repository snapshot. Until a license is added, assume that standard copyright applies and that reuse or redistribution is not automatically granted. Add a `LICENSE` file if you want to permit open-source use.
 
 ---
 
