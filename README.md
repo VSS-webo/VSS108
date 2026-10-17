@@ -7,6 +7,7 @@ LoopCampus helps students give useful items a second life instead of letting the
 > Built with Next.js, TypeScript, Tailwind CSS, and Supabase.
 
 Live Deployment : https://vss108-buildathon.vercel.app/
+Video : https://drive.google.com/file/d/1R9JCnWfisLtqwjJn6hUvD2h6iEyb68tX/view?usp=sharing
 
 ## Why LoopCampus?
 
